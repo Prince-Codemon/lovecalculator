@@ -92,7 +92,7 @@ const App = () => {
               .original.url
           );
           try {
-            const res = await fetch(
+           await fetch(
               `${process.env.REACT_APP_FIREBASE_URL}`,
               {
                 method: "POST",
