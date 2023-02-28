@@ -119,6 +119,11 @@ button:hover{
   background-color: rgb(248, 63, 63);
 }
 
+button:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .result{
   display: flex;
   justify-content: center;

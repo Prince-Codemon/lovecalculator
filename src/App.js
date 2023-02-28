@@ -58,7 +58,7 @@ const App = () => {
       });
     }
     if (!/^[a-zA-Z\s]+$/.test(name) || !/^[a-zA-Z\s]+$/.test(partner)) {
-      return toast("Nibo naam likho no nhi ", {
+      return toast("Nibo sirf naam likho ", {
         icon: "🤣",
       });
     }
@@ -92,19 +92,16 @@ const App = () => {
               .original.url
           );
           try {
-           await fetch(
-              `${process.env.REACT_APP_FIREBASE_URL}`,
-              {
-                method: "POST",
-                body: JSON.stringify({
-                  name: name,
-                  crush: partner,
-                }),
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
+            await fetch(`${process.env.REACT_APP_FIREBASE_URL}`, {
+              method: "POST",
+              body: JSON.stringify({
+                name: name,
+                crush: partner,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
           } catch (e) {
             console.error("Error adding document: ", e);
           }
@@ -148,7 +145,9 @@ const App = () => {
             placeholder="your crush name"
           />
 
-          <button>Calculate</button>
+          <button disabled={loading}>
+            {loading ? "Calculating..." : "Calculate"}
+          </button>
         </form>
       )}
 
