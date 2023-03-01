@@ -63,6 +63,15 @@ const App = () => {
       });
     }
 
+    if(
+      name.length > 20 ||
+      partner.length > 20
+    ){
+      return toast("Nibo nam dalo address nhi", {
+        icon: "😅",
+      });
+    }
+
     if (name && partner) {
       setLoading(true);
       setResult("");
@@ -97,6 +106,7 @@ const App = () => {
               body: JSON.stringify({
                 name: name,
                 crush: partner,
+                percentage:response.data.percentage
               }),
               headers: {
                 "Content-Type": "application/json",
@@ -152,26 +162,48 @@ const App = () => {
       )}
 
       {show && (
-        <div className="result">
-          <p>{loading ? "Loading..." : result}</p>
-          <p>
-            Love Percentage:{" "}
-            <span>{loading ? "Loading..." : percentage + "%"}</span>
-          </p>
-          <img src={img} alt="" />
-          <button
-            onClick={() => {
-              setShow(false);
-              setName("");
-              setPartner("");
-              setResult("");
-              setPercentage("");
-              setImg("");
-            }}
-          >
-            New Calculate
-          </button>
-        </div>
+        <>
+          <div className="result">
+          <div className="heart-wrapper">
+            <BsFillSuitHeartFill className="heart1" />
+            <div className="info">
+              <h3>{
+                name.length > 10
+                  ? name.slice(0, 10) + "..."
+                  : name
+
+              
+              }</h3>
+              <h3>&</h3>
+              <h3>{partner.length > 10
+                  ? partner.slice(0, 10) + "..."
+                  : partner
+
+
+              }</h3>
+
+            </div>
+          </div>
+            <p>{loading ? "Loading..." : result}</p>
+            <p>
+              Love Percentage:{" "}
+              <span>{loading ? "Loading..." : percentage + "%"}</span>
+            </p>
+            <img src={img} alt="" />
+            <button
+              onClick={() => {
+                setShow(false);
+                setName("");
+                setPartner("");
+                setResult("");
+                setPercentage("");
+                setImg("");
+              }}
+            >
+              New Calculate
+            </button>
+          </div>
+        </>
       )}
 
       <div className="footer">
