@@ -63,10 +63,7 @@ const App = () => {
       });
     }
 
-    if(
-      name.length > 20 ||
-      partner.length > 20
-    ){
+    if (name.length > 20 || partner.length > 20) {
       return toast("Nibo nam dalo address nhi", {
         icon: "😅",
       });
@@ -106,7 +103,7 @@ const App = () => {
               body: JSON.stringify({
                 name: name,
                 crush: partner,
-                percentage:response.data.percentage
+                percentage: response.data.percentage,
               }),
               headers: {
                 "Content-Type": "application/json",
@@ -164,26 +161,16 @@ const App = () => {
       {show && (
         <>
           <div className="result">
-          <div className="heart-wrapper">
-            <BsFillSuitHeartFill className="heart1" />
-            <div className="info">
-              <h3>{
-                name.length > 10
-                  ? name.slice(0, 10) + "..."
-                  : name
-
-              
-              }</h3>
-              <h3>&</h3>
-              <h3>{partner.length > 10
-                  ? partner.slice(0, 10) + "..."
-                  : partner
-
-
-              }</h3>
-
+            <div className="heart-wrapper">
+              <BsFillSuitHeartFill className="heart1" />
+              <div className="info">
+                <h3>{name.length > 10 ? name.slice(0, 10) + "..." : name}</h3>
+                <h3>&</h3>
+                <h3>
+                  {partner.length > 10 ? partner.slice(0, 10) + "..." : partner}
+                </h3>
+              </div>
             </div>
-          </div>
             <p>{loading ? "Loading..." : result}</p>
             <p>
               Love Percentage:{" "}
@@ -208,9 +195,26 @@ const App = () => {
 
       <div className="footer">
         <p>
+          <a
+            href="https://github.com/Prince-Codemon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            style={{ marginLeft: "10px" }}
+            href="https://www.instagram.com/prince.devl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i  class="fa-brands fa-instagram"></i>
+          </a>
+        </p>
+        <p>
           Made with ❤️ by{" "}
           <a
-            href="https://www.princecodemon.live/"
+            href="https://princecodemon.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
